@@ -62,24 +62,26 @@
 						<input type="text" id="trainName" class="form-control">
 					</div>
 
-					<!-- <div class="form-group">
-						<label>Destination</label>
-						<input type="text" id="lastNameInput" class="form-control">
-					</div> -->
-
 					<div class="form-group">
 						<label>Destination</label>
 						<input type="text" id="destination" class="form-control">
 					</div>
+
+					<div class="form-group">
+						<label>First Train Time(HH:mm - military time)</label>
+						<input type="time" id="trainTime" class="form-control">
+					</div>
+
 					<div class="form-group">
 						<label>Frequency</label>
 						<input type="number" id="frequency" class="form-control">
 					</div>
 
-					<div class="form-group">
-						<label>Minutes Away</label>
-						<input type="number" id="rateInput" class="form-control">
-					</div>
+					<!-- <div class="form-group">
+						<label>Next Arrival</label>
+						<input type="number" id="nextArrival" class="form-control">
+					</div> -->
+
 					<!-- BUTTON for INPUT -->
 					<div class="form-group text-center">
 						<button class="btn btn-primary">
@@ -87,6 +89,7 @@
 						</button>
 					</div>
 				</form>
+				
 			  </div>
 			</div>
 	</div>
@@ -106,26 +109,29 @@
 
 	function clearForm() {
 		$('#trainName').val('');
-		//$('#lastNameInput').val('');
 		$('#destination').val('');
 		$('#frequency').val('');
-		$('#rateInput').val('');
+	//	$('#nextArrival').val('');
 	}
 
 	$('#newEmployeeForm').on('submit', function () {
 		var trainName = $('#trainName').val();
-		//var lastName = $('#lastNameInput').val();
 		var destination = $('#destination').val();
-		var dateStarted = $('#frequency').val();
-		var monthlyRate = $('#rateInput').val();
+		var frequency = $('#frequency').val();
+		var time = $('#trainTime').val();
+		//var nextArrival = $('#nextArrival').val();
 
-		//var fullName = firstName + ' ' + lastName;
+		moment('')
+
+		// var result = frequency * time;
+		// console.log(result);
 
 		var newEmployee = {
 			name: trainName,
-			role: destination,
-			dateStarted: dateStarted,
-			monthlyRate: monthlyRate
+			destination: destination,
+			frequency: frequency,
+			time: trainTime
+			// nextArrival: nextArrival
 		};
 
 		clearForm();
@@ -148,21 +154,23 @@
 		var td = $('<td>').text(newestEmployee.name);
 		row.append(td);
 
-		td = $('<td>').text(newestEmployee.role);
+		td = $('<td>').text(newestEmployee.destination);
 		row.append(td);
 
-		td = $('<td>').text(newestEmployee.dateStarted);
+		td = $('<td>').text(newestEmployee.frequency);
 		row.append(td);
 
 		// months worked
-		var momentToday = moment();
-		var momentDateStarted = moment(newestEmployee.dateStarted);
-		var monthsWorked = momentToday.diff(momentDateStarted, 'month');
-		row.append($('<td>', {
-			text: monthsWorked
-		}));
+		// var momentToday = moment();
+		// var momentDateStarted = moment(newestEmployee.dateStarted);
+		// var monthsWorked = momentToday.diff(momentDateStarted, 'month');
+		// row.append($('<td>', {
+		// 	text: monthsWorked
+		// }));
 
-		td = $('<td>').text(newestEmployee.monthlyRate);
+		//this is just the row
+		//must do calculation then input in this td
+		td = $('<td>').text(newestEmployee.nextArrival);
 		row.append(td);
 
 		// total billed

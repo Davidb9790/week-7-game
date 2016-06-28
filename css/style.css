@@ -4,3 +4,10 @@ h3{
 	text-align: center;
 	font-size: 28px;
 }
+body{
+	background-image: url("train.jpg");
+}
+.container{
+	opacity: .85;
+	font-weight: bold;
+}
